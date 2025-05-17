@@ -6,6 +6,11 @@ import Login from './components/Login';
 import Register from './components/signUp';
 import Dashboard from './pages/Dashboard';
 import Editor from './pages/Editor';
+import AllNotes from './pages/allNotes';
+import SharedNotes from './pages/sharedNote';
+import SharedWithMe from './pages/sharedWithMe';
+import SharedWithOther from './pages/sharedWithOthers';
+
 
 
 function App() {
@@ -35,6 +40,10 @@ function App() {
           path="/editor/:noteId"
           element={isAuthenticated ? <Editor /> : <Navigate to="/login" />}
         />
+        <Route path="/all-notes" element={<AllNotes />} />
+        <Route path="/shared-notes" element={<SharedNotes />} />
+        <Route path="/shared-with-me" element={<SharedWithMe />} />
+        <Route path="/shared-with-others" element={<SharedWithOther />} />
         </Routes>
     </Router>
   )

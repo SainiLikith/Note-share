@@ -23,8 +23,8 @@ function Dashboard() {
             Authorization: `Bearer ${token}`,
           },
         });
-        setNotes(res.data.ownerNotes);
-        setSharedNotes(res.data.sharedNotes);
+        setNotes(res.data.ownerNotes || []);
+        setSharedNotes(res.data.sharedNotes || []);
       } catch (error) {
         console.error("Error fetching notes:", error);
       }
@@ -83,7 +83,7 @@ function Dashboard() {
       ))}
 
       <h2>Create New Note</h2>
-      <input
+       <input
         type="text"
         placeholder="Title"
         value={title}
@@ -98,6 +98,18 @@ function Dashboard() {
         style={{ display: "block", width: "100%", marginBottom: "8px" }}
       />
       <button onClick={handleCreateNote}>Create Note</button>
+      <button onClick={() => navigate("/all-notes")} style={{ marginLeft: "10px" }}>
+        View All Notes
+      </button>
+      <button onClick={() => navigate("/shared-notes")} style={{ marginLeft: "10px" }}>
+        View Shared Notes
+      </button>
+      <button onClick={() => navigate("/shared-with-me")} style={{ marginLeft: "10px" }}>
+        View Shared With Me
+      </button>
+      <button onClick={() => navigate("/shared-with-others")} style={{ marginLeft: "10px" }}>
+        View Shared With Others
+      </button>
     </div>
   );
 }
